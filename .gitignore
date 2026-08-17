@@ -50,6 +50,7 @@ frontend/public/*.bin
 !well_seismic/output/impedance_tie_summary.csv
 !well_seismic/output/auto_well_horizon_mapping.json
 !frontend/src/data.js
+!frontend/src/grid_data.js
 !frontend/public/*.bin
 
 # 5. Diagnostic outputs, python caches & temp outputs
