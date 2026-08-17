@@ -44,6 +44,7 @@ import MlKinkExplorerTab from './MlKinkExplorerTab';
 import MlV11PredictorTab from './MlV11PredictorTab';
 import MlWellZoomTab from './MlWellZoomTab';
 import SswtMlJourneyTab from './SswtMlJourneyTab';
+import ChatWidget from './ChatWidget';
 import { gridData } from './grid_data';   // stub returns null until real data is ready
 import { modelComparisonData } from './model_comparison_data';
 import './App.css';
@@ -879,7 +880,7 @@ function App() {
           <div>
             <div className="nav-title">Geophysicist Menu</div>
             <nav className="nav-list">
-              <button 
+              <button
                 className={`nav-item ${activeTab === 'overview' ? 'active' : ''}`}
                 onClick={() => setActiveTab('overview')}
               >
@@ -2451,6 +2452,9 @@ function App() {
 
         </main>
       </div>
+
+      {/* Floating AI assistant - available on every page, not tied to activeTab */}
+      <ChatWidget />
     </div>
   );
 }
