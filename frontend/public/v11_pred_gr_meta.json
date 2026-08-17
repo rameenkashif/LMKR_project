@@ -1,0 +1,18 @@
+{
+  "key": "GR",
+  "name": "Gamma Ray (GR)",
+  "unit": "API",
+  "min_val": 10.0,
+  "max_val": 51.41160202026367,
+  "shape": [
+    245,
+    252,
+    313
+  ],
+  "i_min": 382,
+  "i_max": 626,
+  "j_min": 46,
+  "j_max": 297,
+  "tStart": 2086.0,
+  "dt_ms": 2.0
+}

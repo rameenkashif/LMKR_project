@@ -1,0 +1,48 @@
+# =========================================================================
+# LMKR Geologist Dashboard Git Ignore Rules
+# Designed to prevent leaking confidential well logs, seismic volumes, and predictions.
+# =========================================================================
+
+# 1. Raw Confidential Well Data & Seismic Volumes
+segy/
+las/
+*.segy
+*.sgy
+*.las
+*.csv
+
+# 2. Intermediate/Generated ML Data & Features
+training_data/output/
+well_seismic/output/
+*.joblib
+
+# 3. Machine Learning Outputs & Report Assets (Large files & QC plots)
+ml_outputs_v3/
+images/
+*.png
+*.webp
+
+# 4. Frontend Large Compiled Datasets & Dependencies
+frontend/node_modules/
+frontend/dist/
+frontend/src/data.js
+frontend/src/grid_data.js
+frontend/public/*.bin
+.env
+.env.local
+.env.*.local
+
+# 5. Diagnostic outputs, python caches & temp outputs
+understanding/output/
+well_outputs/
+__pycache__/
+*.pyc
+
+# 6. OS, IDE & Agent Metadata
+.vscode/
+.idea/
+.gemini/
+.agents/
+.DS_Store
+Thumbs.db
+*.log
