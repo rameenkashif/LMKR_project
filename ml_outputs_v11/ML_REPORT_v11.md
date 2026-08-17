@@ -1,5 +1,5 @@
 # ML Property Prediction Pipeline: Report V11 (Dynamic Calibration)
-Generated: 2026-08-03 11:41:08
+Generated: 2026-08-17 05:42:43
 
 ## Key Architectural Changes from V10
 
@@ -15,46 +15,46 @@ Blind Well: **Z-04** (never used for any selection decision)
 
 | Target | Sand? | V10 CV R2 | V11 CV R2 | Δ CV | V10 Blind R2 | V11 Blind R2 | Δ Blind |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **AI** | NO | N/A | -0.0092 | N/A | N/A | -0.1039 | N/A |
-| **DT** | NO | N/A | +0.0637 | N/A | N/A | -0.3874 | N/A |
-| **MURHO** | NO | N/A | +0.0382 | N/A | N/A | +0.0026 | N/A |
-| **MURHO** | YES | N/A | +0.0458 | N/A | N/A | +0.0797 | N/A |
-| **PHIT** | NO | N/A | -0.5354 | N/A | N/A | +0.0855 | N/A |
-| **POIS** | NO | N/A | +0.0747 | N/A | N/A | -0.3280 | N/A |
-| **POIS** | YES | N/A | +0.0512 | N/A | N/A | -0.1103 | N/A |
-| **VPVS** | NO | N/A | +0.0556 | N/A | N/A | -0.6020 | N/A |
-| **VPVS** | YES | N/A | +0.0201 | N/A | N/A | -0.3089 | N/A |
-| **GR** | NO | N/A | +0.0159 | N/A | N/A | +0.0591 | N/A |
-| **RHOB** | NO | N/A | -0.1321 | N/A | N/A | -0.3901 | N/A |
-| **VSH** | NO | N/A | -0.1162 | N/A | N/A | -0.0423 | N/A |
-| **PHIE** | NO | N/A | -0.3819 | N/A | N/A | +0.0432 | N/A |
-| **PHIE** | YES | N/A | -0.3458 | N/A | N/A | +0.0395 | N/A |
-| **SWE** | NO | N/A | -0.1530 | N/A | N/A | -0.1711 | N/A |
-| **SWE** | YES | N/A | -0.2147 | N/A | N/A | -0.2303 | N/A |
-| **LMRHO** | NO | N/A | -0.0256 | N/A | N/A | -0.2948 | N/A |
-| **LMRHO** | YES | N/A | -0.0292 | N/A | N/A | -0.6050 | N/A |
-| **RHOB** | NO | N/A | -999.0000 | N/A | N/A | -0.9022 | N/A |
+| **AI** | NO | N/A | -0.0185 | N/A | N/A | -0.1135 | N/A |
+| **DT** | NO | N/A | +0.0858 | N/A | N/A | -0.3540 | N/A |
+| **MURHO** | NO | N/A | +0.0557 | N/A | N/A | -0.0353 | N/A |
+| **MURHO** | YES | N/A | +0.0524 | N/A | N/A | +0.1084 | N/A |
+| **PHIT** | NO | N/A | -0.5392 | N/A | N/A | +0.0759 | N/A |
+| **POIS** | NO | N/A | +0.0900 | N/A | N/A | -0.2603 | N/A |
+| **POIS** | YES | N/A | +0.0630 | N/A | N/A | -0.4599 | N/A |
+| **VPVS** | NO | N/A | +0.0789 | N/A | N/A | -0.4818 | N/A |
+| **VPVS** | YES | N/A | +0.0641 | N/A | N/A | -0.7560 | N/A |
+| **GR** | NO | N/A | -0.0051 | N/A | N/A | +0.0401 | N/A |
+| **RHOB** | NO | N/A | -0.1476 | N/A | N/A | -0.4981 | N/A |
+| **VSH** | NO | N/A | -0.1332 | N/A | N/A | -0.2063 | N/A |
+| **PHIE** | NO | N/A | -0.3928 | N/A | N/A | +0.0454 | N/A |
+| **PHIE** | YES | N/A | -0.3698 | N/A | N/A | +0.0648 | N/A |
+| **SWE** | NO | N/A | -0.1916 | N/A | N/A | -0.0320 | N/A |
+| **SWE** | YES | N/A | -0.2684 | N/A | N/A | -0.0972 | N/A |
+| **LMRHO** | NO | N/A | -0.0719 | N/A | N/A | -0.2715 | N/A |
+| **LMRHO** | YES | N/A | -0.0973 | N/A | N/A | -0.2877 | N/A |
+| **RHOB** | NO | N/A | -999.0000 | N/A | N/A | -0.8697 | N/A |
 
 ## Full V11 Performance Table
 
 | Target | Sand? | Strategy | Best Model | CV R2 | Blind R2 | Facies α |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **AI** | NO | Standard | Stacking (Tree) | -0.0092 | -0.1039 | N/A |
-| **DT** | NO | Standard | Stacking (Tree) | +0.0637 | -0.3874 | N/A |
-| **MURHO** | NO | Standard | Stacking (Ridge) | +0.0382 | +0.0026 | N/A |
-| **MURHO** | YES | Standard | Stacking (Ridge) | +0.0458 | +0.0797 | N/A |
-| **PHIT** | NO | Standard | Stacking (Ridge) | -0.5354 | +0.0855 | N/A |
-| **POIS** | NO | Standard | Stacking (Tree) | +0.0747 | -0.3280 | N/A |
-| **POIS** | YES | Standard | Stacking (Ridge) | +0.0512 | -0.1103 | N/A |
-| **VPVS** | NO | Standard | Stacking (Tree) | +0.0556 | -0.6020 | N/A |
-| **VPVS** | YES | Standard | Stacking (Ridge) | +0.0201 | -0.3089 | N/A |
-| **GR** | NO | Standard | Random Forest (Shallow) | +0.0159 | +0.0591 | N/A |
-| **RHOB** | NO | Standard | Random Forest (Shallow) | -0.1321 | -0.3901 | N/A |
-| **VSH** | NO | Standard | Extra Trees (Shallow) | -0.1162 | -0.0423 | N/A |
-| **PHIE** | NO | Standard | Stacking (Tree) | -0.3819 | +0.0432 | N/A |
-| **PHIE** | YES | Cascaded | Stacking (Tree) | -0.3458 | +0.0395 | N/A |
-| **SWE** | NO | Standard | Random Forest (Shallow) | -0.1530 | -0.1711 | N/A |
-| **SWE** | YES | Standard | Random Forest (Shallow) | -0.2147 | -0.2303 | N/A |
-| **LMRHO** | NO | Cascaded | Random Forest (Shallow) | -0.0256 | -0.2948 | N/A |
-| **LMRHO** | YES | Cascaded | Random Forest (Deep) | -0.0292 | -0.6050 | N/A |
-| **RHOB** | NO | Physics | Physics-Derived (AI/Vp) | -999.0000 | -0.9022 | N/A |
+| **AI** | NO | Standard | Stacking (Tree) | -0.0185 | -0.1135 | N/A |
+| **DT** | NO | Standard | Stacking (Tree) | +0.0858 | -0.3540 | N/A |
+| **MURHO** | NO | Standard | Stacking (Tree) | +0.0557 | -0.0353 | N/A |
+| **MURHO** | YES | Standard | Stacking (Ridge) | +0.0524 | +0.1084 | N/A |
+| **PHIT** | NO | Standard | Stacking (Ridge) | -0.5392 | +0.0759 | N/A |
+| **POIS** | NO | Standard | Stacking (Tree) | +0.0900 | -0.2603 | N/A |
+| **POIS** | YES | Standard | Extra Trees (Deep) | +0.0630 | -0.4599 | N/A |
+| **VPVS** | NO | Standard | Stacking (Tree) | +0.0789 | -0.4818 | N/A |
+| **VPVS** | YES | Standard | Extra Trees (Deep) | +0.0641 | -0.7560 | N/A |
+| **GR** | NO | Standard | Random Forest (Shallow) | -0.0051 | +0.0401 | N/A |
+| **RHOB** | NO | Standard | Extra Trees (Shallow) | -0.1476 | -0.4981 | N/A |
+| **VSH** | NO | Cascaded | Stacking (Tree) | -0.1332 | -0.2063 | N/A |
+| **PHIE** | NO | Standard | Stacking (Ridge) | -0.3928 | +0.0454 | N/A |
+| **PHIE** | YES | Cascaded | Stacking (Tree) | -0.3698 | +0.0648 | N/A |
+| **SWE** | NO | Standard | Extra Trees (Shallow) | -0.1916 | -0.0320 | N/A |
+| **SWE** | YES | Cascaded | Extra Trees (Deep) | -0.2684 | -0.0972 | N/A |
+| **LMRHO** | NO | Standard | Stacking (Tree) | -0.0719 | -0.2715 | N/A |
+| **LMRHO** | YES | Cascaded | Stacking (Tree) | -0.0973 | -0.2877 | N/A |
+| **RHOB** | NO | Physics | Physics-Derived (AI/Vp) | -999.0000 | -0.8697 | N/A |
