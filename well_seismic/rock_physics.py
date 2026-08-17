@@ -73,7 +73,7 @@ def process_well_rock_physics(well_name):
     # Update LAS file
     def update_las_curve(name, values, descr=""):
         if name in las.keys():
-            las[name].data = values
+            las.curves[name].data = values
         else:
             las.append_curve(name, values, unit="", descr=descr)
 

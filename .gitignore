@@ -52,6 +52,8 @@ frontend/public/*.bin
 !frontend/src/data.js
 !frontend/src/grid_data.js
 !frontend/public/*.bin
+!frontend/public/well_images/
+!frontend/public/well_images/*.png
 
 # 5. Diagnostic outputs, python caches & temp outputs
 understanding/output/
