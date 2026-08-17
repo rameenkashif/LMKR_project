@@ -6,6 +6,7 @@
 # 1. Raw Confidential Well Data & Seismic Volumes
 segy/
 las/
+/las
 *.segy
 *.sgy
 *.las
