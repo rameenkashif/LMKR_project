@@ -2,8 +2,8 @@
   "key": "RHOB",
   "name": "Bulk Density (RHOB)",
   "unit": "g/cc",
-  "min_val": 2.20821213722229,
-  "max_val": 2.569716691970825,
+  "min_val": 2.213754415512085,
+  "max_val": 2.5630574226379395,
   "shape": [
     245,
     252,

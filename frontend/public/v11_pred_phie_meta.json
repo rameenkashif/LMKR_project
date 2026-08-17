@@ -2,8 +2,8 @@
   "key": "PHIE",
   "name": "Effective Porosity (PHIE)",
   "unit": "fraction",
-  "min_val": 0.04584936425089836,
-  "max_val": 0.2856840491294861,
+  "min_val": 0.04390249028801918,
+  "max_val": 0.28415238857269287,
   "shape": [
     245,
     252,

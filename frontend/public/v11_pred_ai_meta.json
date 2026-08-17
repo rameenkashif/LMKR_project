@@ -2,8 +2,8 @@
   "key": "AI",
   "name": "Acoustic Impedance (AI)",
   "unit": "(m/s)*(g/cc)",
-  "min_val": 5768.90185546875,
-  "max_val": 12629.193359375,
+  "min_val": 5771.716796875,
+  "max_val": 12633.9814453125,
   "shape": [
     245,
     252,

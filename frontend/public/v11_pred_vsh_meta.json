@@ -2,8 +2,8 @@
   "key": "VSH",
   "name": "Volume of Shale (VSH)",
   "unit": "fraction",
-  "min_val": 0.07466043531894684,
-  "max_val": 0.3131297528743744,
+  "min_val": 0.06703467667102814,
+  "max_val": 0.32010865211486816,
   "shape": [
     245,
     252,

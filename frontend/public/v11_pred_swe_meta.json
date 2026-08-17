@@ -2,7 +2,7 @@
   "key": "SWE",
   "name": "Water Saturation (SWE)",
   "unit": "fraction",
-  "min_val": 0.4800876975059509,
+  "min_val": 0.43197304010391235,
   "max_val": 1.0,
   "shape": [
     245,

@@ -2,8 +2,8 @@
   "key": "PHIT",
   "name": "Total Porosity (PHIT)",
   "unit": "fraction",
-  "min_val": 0.06608648598194122,
-  "max_val": 0.29515743255615234,
+  "min_val": 0.06607581675052643,
+  "max_val": 0.2943592071533203,
   "shape": [
     245,
     252,
