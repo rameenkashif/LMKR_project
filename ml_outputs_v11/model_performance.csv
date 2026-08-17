@@ -1,0 +1,20 @@
+target,best_model,best_cv_r2,best_cv_mae,blind_r2,blind_mae,winning_strategy,selected_features,is_sand_only,tuned_facies_alpha,selection_criterion
+AI,Stacking (Tree),-0.01847409353593697,719.9795300087902,-0.1135153507568698,656.3076864760413,Standard,"['amp_center', 'amp_shift_+2', 'env_center', 'env_deriv', 'ifreq_center']",False,N/A,cv_r2
+DT,Stacking (Tree),0.0857520254262397,3.1540616178569647,-0.35403912707353413,2.0307303895964703,Standard,"['amp_center', 'amp_shift_+2', 'env_center', 'env_deriv', 'ifreq_center']",False,N/A,cv_r2
+MURHO,Stacking (Tree),0.05571884129521363,3.053547197074781,-0.03532588372314249,2.216524020945261,Standard,"['amp_center', 'amp_shift_+2', 'env_center', 'env_deriv', 'ifreq_center']",False,N/A,cv_r2
+MURHO,Stacking (Ridge),0.05242673591075445,2.9607675894606067,0.10835697493082441,2.0448835394311122,Standard,"['amp_center', 'amp_shift_+2', 'env_center', 'env_deriv', 'ifreq_center']",True,N/A,cv_r2
+PHIT,Stacking (Ridge),-0.5391876360763118,0.02003789369581083,0.0758600392297355,0.0104233647210818,Standard,"['amp_center', 'amp_shift_+2', 'env_center', 'env_deriv', 'ifreq_center']",False,N/A,cv_r2
+POIS,Stacking (Tree),0.09003461667509192,0.018525877194452953,-0.2602923165747273,0.011810620341122086,Standard,"['amp_center', 'amp_shift_+2', 'env_center', 'env_deriv', 'ifreq_center']",False,N/A,cv_r2
+POIS,Extra Trees (Deep),0.06296330151932689,0.0184189169653501,-0.4599460491643834,0.01327672506815732,Standard,"['amp_center', 'amp_shift_+2', 'env_center', 'env_deriv', 'ifreq_center']",True,N/A,cv_r2
+VPVS,Stacking (Tree),0.07887589864143711,0.033486596801863194,-0.48184052809832423,0.021802318338411866,Standard,"['amp_center', 'amp_shift_+2', 'env_center', 'env_deriv', 'ifreq_center']",False,N/A,cv_r2
+VPVS,Extra Trees (Deep),0.06414392503995663,0.033044077100919965,-0.7559999079950439,0.02416170419899878,Standard,"['amp_center', 'amp_shift_+2', 'env_center', 'env_deriv', 'ifreq_center']",True,N/A,cv_r2
+GR,Random Forest (Shallow),-0.005147524746360654,13.429337898062142,0.04006619352423646,15.614701776674632,Standard,"['amp_center', 'amp_shift_+2', 'env_center', 'env_deriv', 'ifreq_center']",False,N/A,cv_r2
+RHOB,Extra Trees (Shallow),-0.14764979158059133,0.05776122220604609,-0.49808713110980607,0.09366411157845092,Standard,"['amp_center', 'amp_shift_+2', 'env_center', 'env_deriv', 'ifreq_center']",False,N/A,cv_r2
+VSH,Stacking (Tree),-0.13318077199014192,0.07161652503015949,-0.20633037851549796,0.07718049250868796,Cascaded,"['amp_center', 'amp_shift_+2', 'env_center', 'env_deriv', 'ifreq_center']",False,N/A,cv_r2
+PHIE,Stacking (Ridge),-0.39277519313193826,0.024864530426608838,0.04542299824750751,0.017296322671437468,Standard,"['amp_center', 'amp_shift_+2', 'env_center', 'env_deriv', 'ifreq_center']",False,N/A,cv_r2
+PHIE,Stacking (Tree),-0.36977897648596664,0.02452335905757121,0.06484744516976582,0.015315354776749113,Cascaded,"['amp_center', 'amp_shift_+2', 'env_center', 'env_deriv', 'ifreq_center']",True,N/A,cv_r2
+SWE,Extra Trees (Shallow),-0.19162024389487967,0.22954955428135845,-0.03198341141182315,0.19007079707141136,Standard,"['amp_center', 'amp_shift_+2', 'env_center', 'env_deriv', 'ifreq_center']",False,N/A,cv_r2
+SWE,Extra Trees (Deep),-0.2683593085803276,0.23332887362633767,-0.09717659368507148,0.18218634654047314,Cascaded,"['amp_center', 'amp_shift_+2', 'env_center', 'env_deriv', 'ifreq_center']",True,N/A,cv_r2
+LMRHO,Stacking (Tree),-0.07194808811915944,0.3704969601482306,-0.2714752364549331,0.4694102180835935,Standard,"['amp_center', 'amp_shift_+2', 'env_center', 'env_deriv', 'ifreq_center']",False,N/A,cv_r2
+LMRHO,Stacking (Tree),-0.0973244269920381,0.3636950125780159,-0.28772321420104974,0.4790330380304439,Cascaded,"['amp_center', 'amp_shift_+2', 'env_center', 'env_deriv', 'ifreq_center']",True,N/A,cv_r2
+RHOB,Physics-Derived (AI/Vp),-999.0,999.0,-0.8696705545209285,0.11850980995703979,Physics,"['AI', 'DT']",False,N/A,N/A

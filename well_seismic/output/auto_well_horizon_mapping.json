@@ -1,0 +1,93 @@
+{
+  "Z-04": {
+    "well_name": "Z-04",
+    "type": "Blind Test Well",
+    "inline_real": 488,
+    "crossline_real": 156,
+    "inline_local": 106,
+    "crossline_local": 110,
+    "k_first_sample": 80,
+    "k_last_sample": 154,
+    "tMin_ms": 2246.0,
+    "tMax_ms": 2394.0,
+    "channel_thickness_ms": 148.0
+  },
+  "Z-08-ST-02": {
+    "well_name": "Z-08-ST-02",
+    "type": "Blind Test Well",
+    "inline_real": 420,
+    "crossline_real": 156,
+    "inline_local": 38,
+    "crossline_local": 110,
+    "k_first_sample": 100,
+    "k_last_sample": 174,
+    "tMin_ms": 2286.0,
+    "tMax_ms": 2434.0,
+    "channel_thickness_ms": 148.0
+  },
+  "Z-02": {
+    "well_name": "Z-02",
+    "type": "Training Well",
+    "inline_real": 535,
+    "crossline_real": 193,
+    "inline_local": 153,
+    "crossline_local": 147,
+    "k_first_sample": 34,
+    "k_last_sample": 108,
+    "tMin_ms": 2154.0,
+    "tMax_ms": 2302.0,
+    "channel_thickness_ms": 148.0
+  },
+  "Z-03": {
+    "well_name": "Z-03",
+    "type": "Training Well",
+    "inline_real": 428,
+    "crossline_real": 146,
+    "inline_local": 46,
+    "crossline_local": 100,
+    "k_first_sample": 111,
+    "k_last_sample": 185,
+    "tMin_ms": 2308.0,
+    "tMax_ms": 2456.0,
+    "channel_thickness_ms": 148.0
+  },
+  "Z-05": {
+    "well_name": "Z-05",
+    "type": "Training Well",
+    "inline_real": 398,
+    "crossline_real": 199,
+    "inline_local": 16,
+    "crossline_local": 153,
+    "k_first_sample": 69,
+    "k_last_sample": 143,
+    "tMin_ms": 2224.0,
+    "tMax_ms": 2372.0,
+    "channel_thickness_ms": 148.0
+  },
+  "Z-06": {
+    "well_name": "Z-06",
+    "type": "Training Well",
+    "inline_real": 445,
+    "crossline_real": 208,
+    "inline_local": 63,
+    "crossline_local": 162,
+    "k_first_sample": 46,
+    "k_last_sample": 120,
+    "tMin_ms": 2178.0,
+    "tMax_ms": 2326.0,
+    "channel_thickness_ms": 148.0
+  },
+  "Z-07": {
+    "well_name": "Z-07",
+    "type": "Training Well",
+    "inline_real": 488,
+    "crossline_real": 199,
+    "inline_local": 106,
+    "crossline_local": 153,
+    "k_first_sample": 43,
+    "k_last_sample": 117,
+    "tMin_ms": 2172.0,
+    "tMax_ms": 2320.0,
+    "channel_thickness_ms": 148.0
+  }
+}

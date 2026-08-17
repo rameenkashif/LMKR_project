@@ -33,6 +33,25 @@ frontend/public/*.bin
 .env.local
 .env.*.local
 
+# --------------------------------------------------------------------------
+# Pretrained-model / precomputed-results checkpoint (opt-in re-inclusion)
+# Lets a fresh clone (e.g. Codespaces) load results without rerunning the
+# full pipeline. Re-tracks specific generated artifacts that the blanket
+# rules above would otherwise exclude.
+# --------------------------------------------------------------------------
+!ml_outputs_v11/models/*.joblib
+!ml_outputs_v11/facies_model/*.joblib
+!ml_outputs_v11/model_performance.csv
+!ml_outputs_v11/blind_well_actual_vs_predicted.csv
+!training_data/output/
+!training_data/output/training_table.csv
+!training_data/output/log_trends.json
+!well_seismic/output/
+!well_seismic/output/impedance_tie_summary.csv
+!well_seismic/output/auto_well_horizon_mapping.json
+!frontend/src/data.js
+!frontend/public/*.bin
+
 # 5. Diagnostic outputs, python caches & temp outputs
 understanding/output/
 well_outputs/
