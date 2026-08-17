@@ -194,6 +194,12 @@ export default function MlKinkExplorerTab({ onSwitchTab }) {
 
   const [loadingRaw,      setLoadingRaw]      = useState(true);
   const [computingMl,     setComputingMl]     = useState(false);
+  // Bumped once per finished computeSSWTMLSection() run. computingMl alone isn't a
+  // safe redraw trigger: the true->false toggle can happen within one React 18
+  // batching window (the heavy synchronous compute sits between the two setState
+  // calls), so consecutive commits can both resolve to false and the redraw
+  // effect's dependency never visibly changes. This counter always changes.
+  const [mlVersion, setMlVersion] = useState(0);
 
   const [rawVol,   setRawVol]   = useState(null);
   const [rawScale, setRawScale] = useState(1.0);
@@ -240,6 +246,7 @@ export default function MlKinkExplorerTab({ onSwitchTab }) {
       setTimeout(()=>{
         mlCache.current={...computeSSWTMLSection(rawVol,rawScale,sliceType,sliceIdx,getSample,velocityMps),sliceType,sliceIdx,vel:velocityMps};
         setComputingMl(false);
+        setMlVersion(v=>v+1);
       },0);
     },80);
   },[sliceType,inlineIdx,crosslineIdx,velocityMps,rawVol,rawScale,getSample]);
@@ -464,7 +471,7 @@ export default function MlKinkExplorerTab({ onSwitchTab }) {
       }
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[rawVol,rawScale,sliceType,inlineIdx,crosslineIdx,timeIdx,clipLimit,colorScheme,velocityMps,getSample,hoverCoord,computingMl,drawTwtAxis,drawWells,overlayWell,overlayProp,drawWellLogOverlay]);
+  },[rawVol,rawScale,sliceType,inlineIdx,crosslineIdx,timeIdx,clipLimit,colorScheme,velocityMps,getSample,hoverCoord,computingMl,mlVersion,drawTwtAxis,drawWells,overlayWell,overlayProp,drawWellLogOverlay]);
 
   const hoverRidge = (hoverCoord&&mlCache.current) ? (() => {
     const c=mlCache.current;const numT=c.numTraces;
