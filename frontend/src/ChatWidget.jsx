@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Bot, User, Loader2, AlertTriangle, X, MessageSquare } from 'lucide-react';
+import { Send, Bot, User, Loader2, AlertTriangle, X, MessageSquare, Compass } from 'lucide-react';
 
 const SUGGESTED_PROMPTS = [
   'Which wells are there, and which one is the blind test well?',
@@ -8,7 +8,19 @@ const SUGGESTED_PROMPTS = [
   'Show me the GR log for Z-02',
 ];
 
-export default function ChatWidget() {
+const TAB_LABELS = {
+  overview: 'Executive Summary', map: 'Borehole Map & Section', tie: 'Well-Seismic Tie Simulator',
+  spectral: 'Spectral Decomposition', prediction: 'ML Property Predictor', table: 'Comparison spreadsheet',
+  grid: 'Grid Predictor Map', gallery: 'Geologist Gallery', thinbed: 'Thin-Bed Workbench',
+  cwt_swt: 'CWT/SWT Study', sswt_analyst: 'SSWT Analyst', xcorr: 'Cross-Correlation Study',
+  volume3d: '3D Reservoir Viewer', r2_scorecard: 'Geological R² Scorecard',
+  spectral_whitening: 'Spectral Whitening', thin_bed_frequency: 'Thin Bed Frequency',
+  spectral_explorer: 'Spectral Explorer', ml_kink_explorer: 'ML SSWT Kink Explorer',
+  ml_v11_predictor: 'V11 ML 3D Seismic Predictor', ml_well_zoom: 'HD Well Seismic Zoom',
+  sswt_journey: 'SSWT ML Methodology & Story',
+};
+
+export default function ChatWidget({ onNavigate }) {
   const [open, setOpen] = useState(false);
   const [hovering, setHovering] = useState(false);
   const [displayMessages, setDisplayMessages] = useState([]); // [{role, text}]
@@ -43,7 +55,27 @@ export default function ChatWidget() {
       if (!res.ok) throw new Error(data.error || `Request failed (${res.status})`);
 
       setApiHistory(data.messages);
-      setDisplayMessages((prev) => [...prev, { role: 'assistant', text: data.reply }]);
+
+      // Detect navigate_to tool calls in the turns this request produced
+      // (everything after what we sent) and actually switch the dashboard.
+      const newTurns = data.messages.slice(newHistory.length);
+      let navNote = null;
+      for (const turn of newTurns) {
+        if (turn.role !== 'assistant' || !Array.isArray(turn.content)) continue;
+        for (const block of turn.content) {
+          if (block.type === 'tool_use' && block.name === 'navigate_to') {
+            onNavigate?.(block.input);
+            const label = TAB_LABELS[block.input.tab] || block.input.tab;
+            navNote = `Navigated to "${label}"${block.input.well ? ` — ${block.input.well}` : ''}${block.input.property ? ` (${block.input.property})` : ''}`;
+          }
+        }
+      }
+
+      setDisplayMessages((prev) => {
+        const next = [...prev, { role: 'assistant', text: data.reply }];
+        if (navNote) next.push({ role: 'system', text: navNote });
+        return next;
+      });
     } catch (err) {
       setError(String(err?.message || err));
     } finally {
@@ -128,6 +160,21 @@ export default function ChatWidget() {
             )}
 
             {displayMessages.map((m, i) => (
+              m.role === 'system' ? (
+                <div key={i} style={{ display: 'flex', justifyContent: 'center' }}>
+                  <div
+                    style={{
+                      display: 'flex', alignItems: 'center', gap: '6px',
+                      fontSize: '11px', fontWeight: 600, color: '#0284c7',
+                      background: 'rgba(2, 132, 199, 0.1)', border: '1px solid rgba(2, 132, 199, 0.25)',
+                      borderRadius: '999px', padding: '4px 10px',
+                    }}
+                  >
+                    <Compass size={11} />
+                    {m.text}
+                  </div>
+                </div>
+              ) : (
               <div key={i} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
                 <div
                   style={{
@@ -155,6 +202,7 @@ export default function ChatWidget() {
                   {m.text}
                 </div>
               </div>
+              )
             ))}
 
             {loading && (

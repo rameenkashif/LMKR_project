@@ -7,7 +7,9 @@ property predictions (GR, DT, RHOB, VSH, PHIE, SWE, PHIT, AI, VPVS, POIS, LMRHO,
 provided - never guess numeric values, always call a tool to look them up. Be concise and geologically
 literal (e.g. explain what a property means only if asked). When reporting model reliability, be honest:
 a negative blind R2 means the model is not reliable for that target on the held-out well, not just "lower
-accuracy" - say so plainly.`;
+accuracy" - say so plainly. When the user asks to see, show, view, or go to something that a specific
+dashboard page displays, call navigate_to in the same turn as your text answer - the dashboard will
+actually switch pages when you do. Don't just describe what a page shows instead of navigating there.`;
 
 const MAX_TOOL_ROUNDS = 6;
 

@@ -81,9 +81,19 @@ const WELL_COORDS = {
   'Z-07':       { localIL: 106, localXL: 153, inline: 488, crossline: 199 },
 };
 
-export default function MlWellZoomTab({ onSwitchTab }) {
+export default function MlWellZoomTab({ onSwitchTab, navRequest }) {
   const [selectedWell, setSelectedWell] = useState('Z-04');
   const [selectedProp, setSelectedProp] = useState('VSH');
+
+  // Apply navigation requests from the AI assistant (chat tool calls).
+  useEffect(() => {
+    if (!navRequest) return;
+    if (navRequest.well && wellsData[navRequest.well]) setSelectedWell(navRequest.well);
+    if (navRequest.property && PROPERTIES.some((p) => p.key === navRequest.property)) {
+      setSelectedProp(navRequest.property);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navRequest]);
   const [zoomRadius,   setZoomRadius]   = useState(14); // Optimal ±14 crosslines around well
   const [contrastMode, setContrastMode] = useState('global'); // 'global' (absolute physical scale 0..1) for 100% color match
   const [useBilinear,  setUseBilinear]  = useState(true);   // smooth bilinear contouring

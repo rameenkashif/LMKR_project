@@ -12,6 +12,20 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const WELL_NAMES = Object.keys(wellsConfig);
 const PROPERTIES = ["GR", "DT", "RHOB", "VSH", "PHIE", "SWE", "PHIT", "AI", "VPVS", "POIS", "LMRHO", "MURHO"];
 
+// Only the properties that actually have a precomputed 3D volume
+// (frontend/public/v11_pred_*.bin) - what the two navigable visual tabs
+// (V11 ML 3D Seismic Predictor, HD Well Seismic Zoom) can actually display.
+const VOLUME_PROPERTIES = ["VSH", "SWE", "PHIE", "PHIT", "GR", "RHOB", "DT", "AI"];
+
+// tab keys must match the activeTab values switched on in App.jsx
+const NAVIGABLE_TABS = [
+  "overview", "map", "tie", "spectral", "prediction", "table", "grid",
+  "gallery", "thinbed", "cwt_swt", "sswt_analyst", "xcorr", "volume3d",
+  "r2_scorecard", "spectral_whitening", "thin_bed_frequency",
+  "spectral_explorer", "ml_kink_explorer", "ml_v11_predictor",
+  "ml_well_zoom", "sswt_journey",
+];
+
 let _perfCache = null;
 function loadModelPerformance() {
   if (_perfCache) return _perfCache;
@@ -91,6 +105,20 @@ export const toolDefinitions = [
       required: ["wellA", "wellB", "property"],
     },
   },
+  {
+    name: "navigate_to",
+    description:
+      "Switch the dashboard's currently displayed page, and optionally focus a specific well and/or property on it. Call this IN ADDITION to your text answer whenever the user asks to see, show, view, open, or go to something specific - do not just describe it in words when a relevant page exists. Use tab='ml_v11_predictor' for 'show me the predicted <property> at <well>' style requests (it supports both well and property), tab='ml_well_zoom' for a close-up/zoomed view of one well, tab='map' for 'where is <well>' style requests, tab='r2_scorecard' for reliability/accuracy questions, tab='tie' for well-tie QC questions. If a request doesn't clearly map to one specific page, don't call this tool.",
+    input_schema: {
+      type: "object",
+      properties: {
+        tab: { type: "string", enum: NAVIGABLE_TABS, description: "The dashboard tab/page to switch to" },
+        well: { type: "string", enum: WELL_NAMES, description: "Optional: well to focus, if the target tab supports it" },
+        property: { type: "string", enum: VOLUME_PROPERTIES, description: "Optional: property to focus, only supported on ml_v11_predictor and ml_well_zoom" },
+      },
+      required: ["tab"],
+    },
+  },
 ];
 
 export async function runTool(name, input) {
@@ -103,6 +131,11 @@ export async function runTool(name, input) {
       return getModelPerformance(input.target);
     case "compare_wells":
       return compareWells(input.wellA, input.wellB, input.property);
+    case "navigate_to":
+      // Navigation itself happens client-side (the frontend inspects this
+      // tool_use block in the returned conversation and updates its own
+      // state) - this just acknowledges the request back to the model.
+      return { ok: true, ...input };
     default:
       throw new Error(`Unknown tool: ${name}`);
   }

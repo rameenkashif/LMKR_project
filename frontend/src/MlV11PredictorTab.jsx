@@ -168,7 +168,7 @@ const CALIBRATED_WELL_TWT_SHIFTS = {
   'Z-07':       214, // Places Z-07 log over peak reservoir at 2,254 ms
 };
 
-export default function MlV11PredictorTab({ onSwitchTab }) {
+export default function MlV11PredictorTab({ onSwitchTab, navRequest }) {
   const [sliceType,    setSliceType]    = useState('inline');
   const [inlineIdx,    setInlineIdx]    = useState(106); // Default Inline 488 (Well Z-04)
   const [crosslineIdx, setCrosslineIdx] = useState(147);
@@ -196,6 +196,20 @@ export default function MlV11PredictorTab({ onSwitchTab }) {
     setOverlayWell(wname);
     setTwtShiftMs(0); // Reset to pre-calibrated TWT tie position
   };
+
+  // Apply navigation requests from the AI assistant (chat tool calls).
+  useEffect(() => {
+    if (!navRequest) return;
+    if (navRequest.well && wellsData[navRequest.well]) {
+      setSliceType('inline');
+      setInlineIdx(wellsData[navRequest.well].inline - iMin);
+      handleSelectOverlayWell(navRequest.well);
+    }
+    if (navRequest.property && PROPERTIES.some((p) => p.key === navRequest.property)) {
+      setSelectedProp(navRequest.property);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navRequest]);
 
   const maxIdx = sliceType==='inline'?I_len-1:sliceType==='crossline'?J_len-1:K_len-1;
   const getSliceLabel = idx => sliceType==='inline' ? `Inline ${iMin+idx}` : sliceType==='crossline' ? `Crossline ${jMin+idx}` : `TWT ${Math.round(tStart+idx*dtMs)} ms`;

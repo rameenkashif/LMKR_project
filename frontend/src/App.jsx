@@ -325,6 +325,15 @@ function App() {
   const [activeTab, setActiveTab] = useState('overview');
   const [storyStep, setStoryStep] = useState(0);
   const [selectedWell, setSelectedWell] = useState('Z-04');
+  // Navigation requests coming from the AI assistant's navigate_to tool calls.
+  // `id` always changes (even for a repeated well/property) so tabs that consume
+  // this via useEffect re-apply it every time, not just on first difference.
+  const [chatNav, setChatNav] = useState(null);
+  const requestNavigate = ({ tab, well, property }) => {
+    if (well) setSelectedWell(well);
+    if (tab) setActiveTab(tab);
+    setChatNav({ tab, well, property, id: Date.now() });
+  };
   const [modelType, setModelType] = useState('Raw'); // 'Calibrated' or 'Raw'
   const [targetProperty, setTargetProperty] = useState('GR');
   const [ssiCutoff, setSsiCutoff] = useState(0.035);
@@ -2437,12 +2446,12 @@ function App() {
 
           {/* TAB 18: V11 ML 3D SEISMIC PREDICTOR (VSH, SWE, PHIE, PHIT, GR, RHOB, DT, AI) */}
           {activeTab === 'ml_v11_predictor' && (
-            <MlV11PredictorTab onSwitchTab={setActiveTab} />
+            <MlV11PredictorTab onSwitchTab={setActiveTab} navRequest={chatNav} />
           )}
 
           {/* TAB 18.5: HD BOREHOLE SEISMIC ZOOM VIEWER */}
           {activeTab === 'ml_well_zoom' && (
-            <MlWellZoomTab onSwitchTab={setActiveTab} />
+            <MlWellZoomTab onSwitchTab={setActiveTab} navRequest={chatNav} />
           )}
 
           {/* TAB 19: SSWT ML METHODOLOGY & STORYBOOK (VISUAL STEP-BY-STEP STORY) */}
@@ -2454,7 +2463,7 @@ function App() {
       </div>
 
       {/* Floating AI assistant - available on every page, not tied to activeTab */}
-      <ChatWidget />
+      <ChatWidget onNavigate={requestNavigate} />
     </div>
   );
 }
