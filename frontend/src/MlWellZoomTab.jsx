@@ -523,7 +523,7 @@ export default function MlWellZoomTab({ onSwitchTab, navRequest }) {
   const activePropObj = PROPERTIES.find(p => p.key === selectedProp) || PROPERTIES[0];
 
   return (
-    <div className="thinbed-workflow-container" style={{ height: 'calc(100vh - 120px)', overflowY: 'auto' }}>
+    <div className="thinbed-workflow-container">
 
       {/* Header bar */}
       <div className="workflow-title-bar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

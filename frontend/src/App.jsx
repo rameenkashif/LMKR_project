@@ -18,7 +18,9 @@ import {
   Link,
   BarChart2,
   Zap,
-  BookOpen
+  BookOpen,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import { 
   LineChart, 
@@ -329,6 +331,7 @@ function App() {
   // `id` always changes (even for a repeated well/property) so tabs that consume
   // this via useEffect re-apply it every time, not just on first difference.
   const [chatNav, setChatNav] = useState(null);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const requestNavigate = ({ tab, well, property }) => {
     if (well) setSelectedWell(well);
     if (tab) setActiveTab(tab);
@@ -885,8 +888,17 @@ function App() {
       {/* Main Workspace */}
       <div className="workspace">
         {/* Navigation Sidebar */}
-        <aside className="sidebar">
-          <div>
+        <aside className={`sidebar ${sidebarCollapsed ? 'collapsed' : ''}`}>
+          <div className="sidebar-nav-scroll">
+            <button
+              className="sidebar-toggle"
+              onClick={() => setSidebarCollapsed((c) => !c)}
+              aria-label={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+              title={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+            >
+              {sidebarCollapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
+              {!sidebarCollapsed && <span style={{ fontSize: '11px', fontWeight: 600 }}>Collapse</span>}
+            </button>
             <div className="nav-title">Geophysicist Menu</div>
             <nav className="nav-list">
               <button

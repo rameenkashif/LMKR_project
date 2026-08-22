@@ -401,7 +401,7 @@ export default function SpectralEnhancementExplorerTab() {
   const mouseMove=(e,ref)=>{if(!ref.current||!rawVol)return;const cv=ref.current,rect=cv.getBoundingClientRect();const cx=(e.clientX-rect.left)*(cv.width/rect.width),cy=(e.clientY-rect.top)*(cv.height/rect.height);const ML=34,plotW=cv.width-ML;const fx=Math.max(0,Math.min(1,(cx-ML)/plotW)),fy=Math.max(0,Math.min(1,cy/cv.height));let i=inlineIdx,j=crosslineIdx,k=timeIdx;if(sliceType==='inline'){j=Math.min(Math.floor(fx*J_len),J_len-1);k=Math.min(Math.floor(fy*K_len),K_len-1);}else if(sliceType==='crossline'){i=Math.min(Math.floor(fx*I_len),I_len-1);k=Math.min(Math.floor(fy*K_len),K_len-1);}else{i=Math.min(Math.floor(fx*I_len),I_len-1);j=Math.min(Math.floor(fy*J_len),J_len-1);}setHoverCoord({i,j,k,rawVal:getSample(rawVol,rawScale,i,j,k)});};
 
   return (
-    <div className="thinbed-workflow-container" style={{ height:'calc(100vh - 120px)' }}>
+    <div className="thinbed-workflow-container">
 
       {/* Navigator */}
       <div className="workflow-navigator-header">

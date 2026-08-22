@@ -585,7 +585,7 @@ export default function MlV11PredictorTab({ onSwitchTab, navRequest }) {
     : null;
 
   return (
-    <div className="thinbed-workflow-container" style={{ height: 'calc(100vh - 120px)' }}>
+    <div className="thinbed-workflow-container">
 
       {/* Slice Navigation Header */}
       <div className="workflow-navigator-header">
